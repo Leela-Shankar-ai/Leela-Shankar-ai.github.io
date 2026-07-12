@@ -1,0 +1,33 @@
+<!doctype html><html lang="en" data-theme="dark"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How this site was made — Invariance AI Labs</title>
+<meta name="description" content="The recipe behind this site: shaders, 3D, a content pipeline, dual themes, all built autonomously by Claude Fable.">
+<meta property="og:title" content="How this site was made — Invariance AI Labs"><meta property="og:description" content="The recipe behind this site: shaders, 3D, a content pipeline, dual themes, all built autonomously by Claude Fable.">
+<meta property="og:type" content="website"><meta name="theme-color" content="#0a0908">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,500&f[]=general-sans@400,500,600&f[]=zodiak@300,400i&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/core.css"><link rel="stylesheet" href="/styles/components.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='3' transform='rotate(45 16 16)' fill='%23ff7a29'/%3E%3C/svg%3E">
+<script type="importmap">{"imports":{"three":"/vendor/three.module.min.js"}}</script>
+</head><body>
+<div id="webgl-wrap"><canvas id="webgl"></canvas></div><div id="grain"></div>
+<div id="chrome-nav"></div>
+<main>
+    <section class="page-hero"><div class="wrap">
+      <span class="eyebrow" data-reveal>Colophon</span>
+      <h1 data-split>How this site was made.</h1>
+      <p class="lede" data-reveal data-reveal-d="2">This whole experience was designed and built by Claude Fable, Anthropic's model, working autonomously: the concept, the shaders, the 3D, the content pipeline, the copy and the deployment. Here is the recipe, so you can do the same.</p>
+    </div></section>
+    <section class="section" style="padding-top:1rem"><div class="wrap" style="max-width:840px">
+      <div class="guide-step" data-reveal><h3>1. Content, not lorem</h3><p>Everything true on this site was harvested straight from the company&#x27;s real sales deck. A Python script read the deck generator&#x27;s data structures, pulled 58 client engagements, and wrote them to a single content.json. The site is generated from that file, so the deck and the website can never drift apart.</p></div><div class="guide-step" data-reveal><h3>2. An asset pipeline, not a download folder</h3><p>Client logos, product screenshots and animated dashboards were converted for the web with Pillow and ffmpeg: logos to WebP at two tones (colour on white, and a knocked out version for dark plates), screenshots downscaled to WebP, and every scrolling GIF re encoded to a tiny looping MP4. The whole media library came down to about 13 MB.</p></div><div class="guide-step" data-reveal><h3>3. A shader for atmosphere</h3><p>The living background is a single fullscreen fragment shader in Three.js: domain warped fractal noise ramped through an ember palette, with a light pool that follows the cursor and recedes as you scroll. In light mode the same field inverts into warm paper. No video, no images, a few kilobytes of GLSL.</p></div><div class="guide-step" data-reveal><h3>4. The Invariant, in 3D</h3><p>The home hero is an icosahedron displaced by 3D simplex noise every frame: endlessly transformed, yet held together by a constant ember core and a calm wireframe shell. It is the company name made literal, orbited by drifting shards, reacting to the mouse.</p></div><div class="guide-step" data-reveal><h3>5. Motion as a system</h3><p>Reveals, split word headlines, magnetic buttons, tilt on every card, an ember trailing cursor, animated counters and an infinite logo marquee are all one small vanilla JS file driven by IntersectionObserver and requestAnimationFrame. No animation library. It respects prefers reduced motion.</p></div><div class="guide-step" data-reveal><h3>6. Dual theme by design</h3><p>Two full palettes live as CSS custom properties, so the toggle is a single attribute flip. Both the shader and the 3D scene read the theme and morph between them over about a second, rather than hard cutting.</p></div><div class="guide-step" data-reveal><h3>7. Typework</h3><p>Clash Display for expressive headlines, Zodiak italic as a contrast serif for the poetic lines, General Sans for body, JetBrains Mono for labels. The mix is deliberately editorial, not the default startup grotesk.</p></div><div class="guide-step" data-reveal><h3>8. Generated and shipped</h3><p>A second Python script renders every route to static HTML with shared nav and footer, then the whole thing deploys to Vercel as a static site. You are looking at the output.</p></div>
+      <div class="card" style="padding:2rem;margin-top:2rem" data-reveal>
+        <p class="dim">Built with Three.js, vanilla JavaScript, hand written GLSL, Pillow and ffmpeg for assets, and a pair of Python generators. Fonts from Fontshare and Google Fonts. Deployed on Vercel. Zero front end frameworks.</p>
+      </div>
+    </div></section></main>
+<div id="chrome-footer"></div>
+<script type="module" src="/js/atmosphere.js"></script>
+
+<script type="module" src="/js/main.js"></script>
+</body></html>
